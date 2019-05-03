@@ -1013,6 +1013,7 @@ css for the dijits
 
 /*css for PreloadWidgetIcon dijit*/
 .jimu-widget-onscreen-icon{
+  width:32px!important; height:30px!important; /*MJM - need !important to override js element.style */	
   position: absolute;
   cursor: pointer;
   border-radius: 4px;
@@ -1020,7 +1021,7 @@ css for the dijits
 .jimu-widget-onscreen-icon img{
   width: 20px;
   height: 20px;
-  margin: 9px;
+  margin: 5px; /*MJM - decrease default margin from 9px*/
 }
 
 /*jimu-loading*/
