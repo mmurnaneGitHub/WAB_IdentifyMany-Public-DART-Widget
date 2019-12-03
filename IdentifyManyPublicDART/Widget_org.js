@@ -93,8 +93,6 @@ function(declare,
 
               //Query buildings setup
               // Update 10/4/19
-              //console.error('test');
-              //queryBuildingTask = new QueryTask("https://arcgisdev02.tacoma.lcl/arcgis/rest/services/PDS/DARTquery_WAB_PUBLIC/MapServer/26");  //TEST!! REMOVE THIS LINE AND USE THE ONE BELOW AssessorImprovement table
               queryBuildingTask = new QueryTask("https://" + webserver1 + "/rest/services/" + folder1 + "/DARTquery_WAB_PUBLIC/MapServer/26");  //Assessor Improvement table
               queryBuilding = new Query();
               queryBuilding.returnGeometry = false; 
@@ -125,7 +123,6 @@ function(declare,
               //Identify parameters for current map state
               //Web services for identify
               //Update 10/4/19
-              //identifyTask = new IdentifyTask("https://arcgisdev02.tacoma.lcl/arcgis/rest/services/PDS/DARTquery_WAB_PUBLIC/MapServer");  //TEST!! REMOVE THIS LINE AND USE THE ONE BELOW All other layers
               identifyTask = new IdentifyTask("https://" + webserver1 + "/rest/services/" + folder1 + "/DARTquery_WAB_PUBLIC/MapServer");  //All other layers - processed with _processIdentifyResults
               identifyParams = new IdentifyParameters();
               identifyParams.returnGeometry = true;
@@ -140,12 +137,9 @@ function(declare,
               //---end Identify parameters
 
               //Identify Soil Contamination - Predicted Arsenic Levels 
-              //identifyTaskArsenic = new IdentifyTask("https://fortress.wa.gov/ecy/ecyprodgislb/arcgis/rest/services/TCP/SmelterSearch/MapServer");  //smelter plume - OLD
-              //identifyTaskArsenic = new IdentifyTask("https://fortress.wa.gov/ecy/gisprod/arcgis/rest/services/TCP/SmelterSearch/MapServer");  //smelter plume - New 10/1/2018
               identifyTaskArsenic = new IdentifyTask("https://fortress.wa.gov/ecy/gisprod/arcgis/rest/services/TCP/DirtAlert/MapServer");  //smelter plume - New 12/6/2018
               identifyParamsArsenic = new IdentifyParameters();
               identifyParamsArsenic.returnGeometry = false;
-              //identifyParamsArsenic.layerIds = [3];  //layers to query - Tacoma Smelter Plume Footprint
               identifyParamsArsenic.layerIds = [15];  //layers to query - Tacoma Smelter Plume Footprint - New order 12/6/2018
               identifyParamsArsenic.layerOption = IdentifyParameters.LAYER_OPTION_VISIBLE;  //identify just visible layers
               identifyParamsArsenic.width  = myMapWidth;
@@ -156,10 +150,10 @@ function(declare,
               // end identify Soil
 
               //Identify Storm (SurfacewaterNetwork) 
-              identifyTaskStorm = new IdentifyTask("https://gis.cityoftacoma.org/arcgis/rest/services/PDS/DARTsewer/MapServer");  //storm
+              identifyTaskStorm = new IdentifyTask("https://gis.cityoftacoma.org/arcgis/rest/services/ES/SurfacewaterNetwork/MapServer"); 
               identifyParamsStorm = new IdentifyParameters();
               identifyParamsStorm.returnGeometry = true;  //need for highlighting
-              identifyParamsStorm.layerIds = [0,1,2,3];  //layer folders to query (All) - Use bullet folder numbers when subfolders are used (not layer numbers)
+              identifyParamsStorm.layerIds = [6,7,8,9,10,11,13,14,15,16,17,21,22,23,24,25,26,27,29,30,31,32,33];  //layer folders to query (All) - Use bullet folder numbers when subfolders are used (not layer numbers)
               identifyParamsStorm.layerOption = IdentifyParameters.LAYER_OPTION_VISIBLE;  //identify just visible layers - based on min/max scale
               identifyParamsStorm.width  = myMapWidth;
               identifyParamsStorm.height = myMapHeight;
@@ -169,10 +163,10 @@ function(declare,
               // end identify Storm
 
               //Identify Sewer (WastewaterNetwork) 
-              identifyTaskSewer = new IdentifyTask("https://gis.cityoftacoma.org/arcgis/rest/services/PDS/DARTsewer/MapServer");  //sewer
+              identifyTaskSewer = new IdentifyTask("https://gis.cityoftacoma.org/arcgis/rest/services/ES/WastewaterNetwork/MapServer");  
               identifyParamsSewer = new IdentifyParameters();
               identifyParamsSewer.returnGeometry = true;  //need for highlighting
-              identifyParamsSewer.layerIds = [4,5,6,7];  //layer folders to query (All) - Use bullet folder numbers when subfolders are used (not layer numbers)
+              identifyParamsSewer.layerIds = [6,7,8,9,10,11,13,14,15,16,20,21,22,23,24,25,26,28,29,30,31];  //layer folders to query (All) - Use bullet folder numbers when subfolders are used (not layer numbers)
               identifyParamsSewer.layerOption = IdentifyParameters.LAYER_OPTION_VISIBLE;  //identify just visible layers
               identifyParamsSewer.width  = myMapWidth;
               identifyParamsSewer.height = myMapHeight;
